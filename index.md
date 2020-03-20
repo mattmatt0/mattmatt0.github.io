@@ -20,7 +20,7 @@ Sur [le site de Discord](https://discord.gg) donc, appuyez sur "Télécharger po
 ### Pour macOS
 Toujours sur [le site de Discord](https://discord.gg) donc, appuyez sur "Télécharger pour macOS". Vous devriez télécharger un fichier dmg. Quand le téléchargement est terminé, ouvrez le fichier dans le Finder. Glissez ensuite l'application Discord dans le dossier Applications. Vous pouvez ensuite essayer de lancer Discord. Il faudra certainement autoriser l'application dans les paramètres (Paramètres -> Confidentialité et sécurité -> Autoriser Discord).
 
-##Pour Linux
+### Pour Linux
 Si vous utilisez ArchLinux, discord est disponnible sur l'AUR.
 Vous n'utilisez pas ArchLinux<sup>vous devriez</sup>?
 Référez vous à la documentation de votre distribution. Si celle-ci est basée sur Debian (Ubuntu, Linux Mint, KDE Neon, ElementaryOS, Deepin...), vous pouvez télécharger un .deb sur [le site de Discord](https://discord.gg), et l'installer avec votre gestionnaire de paquets.
