@@ -10,8 +10,8 @@ Ce guide couvrira la version ordinateur, mais si vous prenez vos repères vous n
 On va commencer donc par installer cette merveille:
 
 ## Installation
-En fait, vous n'êtes même pas obligé d'installer Discord pour l'utiliser <sup>elle est pas belle la vie?</sup>.
-Pour cela, vous allez devoir créer un compte Discord. Afin de vous éviter des clics, je vous donne directement [le lien pour créer un compte sur Discord](https://discordapp.com/register). Quand vous avez créé votre compte, vous pouvez vous rendre sur [le site de Discord](https://discord.gg), et cliquez sur "Ouvrir Discord dans ton navigateur". Vous vous connectez, et voilà! Vous arrivez sur cet incroyable chose qu'est Discord!
+Bien que Discord soit disponnible sur un simple navigateur Web, je conseille l'application: il y a des problèmes sur le stream (partage d'écran en direct) sur la version disponnible sur navigateur. Il s'agit donc d'installer l'application.
+Pour cela, vous allez devoir créer un compte Discord. Afin de vous éviter des clics, je vous donne directement [le lien pour créer un compte sur Discord](https://discordapp.com/register). Quand c'est fait, vous pouvez tester Discord sur [le site de Discord](https://discord.gg) en cliquant sur "Ouvrir Discord dans ton navigateur". Vous vous connectez, et voilà! Vous arrivez sur cet incroyable chose qu'est Discord!
 
 Maintenant, je recommande tout de même d'utiliser l'application. Je vais donc détailler l'installation:
 ### Pour Windows
@@ -22,7 +22,7 @@ Toujours sur [le site de Discord](https://discord.gg) donc, appuyez sur "Téléc
 
 ### Pour Linux
 Si vous utilisez ArchLinux, discord est disponnible sur l'AUR.
-Vous n'utilisez pas ArchLinux<sup>vous devriez</sup>?
+Vous n'utilisez pas ArchLinux?<sup>vous devriez</sup>
 Référez vous à la documentation de votre distribution. Si celle-ci est basée sur Debian (Ubuntu, Linux Mint, KDE Neon, ElementaryOS, Deepin...), vous pouvez télécharger un .deb sur [le site de Discord](https://discord.gg), et l'installer avec votre gestionnaire de paquets.
 ## Présentation de l'interface:
 Vous devriez arriver sur un écran ressemblant à celui-ci:
