@@ -38,6 +38,7 @@ Quand c'est fait, le serveur devrait s'afficher sur la liste des serveurs. Vous 
 ![alt text](Server.jpg)
 La zone en bleu, c'est la liste des "salons" du serveur. Un salon peut être vocal ou textuel, les salons textuels sont précédés d'un "#" et les salons vocaux d'un "🔊". Certains salons ne sont accessibles qu'à certains membres du serveur, d'autres sont accessibles à tous. 
 Les salons peuvent être regroupés en catégories, pour plus de lisibilité. Si vous cliquez sur un salon textuel, vous devriez alors avoir quelque chose comme ceci:
+![alt text](chat.jpg)
 
 J'ai surligné en jaune la barre de saisie de message. Vous pouvez donc écrire un message dans cette barre, mais vous pouvez aussi envoyer des GIFs (images animées), des fichiers, ou des émojis.
 
