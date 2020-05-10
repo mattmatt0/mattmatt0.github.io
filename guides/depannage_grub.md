@@ -1,6 +1,6 @@
 # Guide de dépannage de GRUB
 Si vous avez essayé d'installer Linux sur un ordinateur relativement récent, il se peut que vous ayez eu l'erreur suivante:
-
+![alt text](resources_depannage_grub/Screenshot_20200510_135012.png)
 Ou en fait une erreur par rapport à l'installation de GRUB. C'est une erreur fréquente sur les ordinateurs en UEFI (j'expliquerai de quoi il s'agit juste après). Malheureusement, la solution à ce problème n'est pas facile à trouver, trop peu de documentations l'évoquent. Dans ce guide, je vais donc vous expliquer comment réparer une installation Linux après une erreur d'installation de GRUB.
 Ce guide est à suivre après l'installation du système. Le mieux est de lancer l'installation, d'attendre l'erreur et suivre ce guide, comme ça vous aurez une installation propre. C'est pour ça que je donne l'instruction suivante: **N'éteignez pas votre ordinateur après avoir vu l'erreur d'installation, on va se servir du système en cours de fonctionnement pour dépanner l'installation!**
 ## Quelques explications sur le problème
