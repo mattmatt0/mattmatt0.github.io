@@ -15,8 +15,7 @@ Ce qu'il se passe en fait, c'est que lors de l'installation de GRUB, le programm
 ## Comment on dépanne?
 Je vais donner les étapes que l'on va suivre dans ce guide:
 1. S'assurer que l'on est bien en UEFI
-2. Trouver les partitions systèmes et ESP
-3. Monter ces partitions
+2. Trouver les partitions systèmes et ESP et les monter
 4. Réinstaller GRUB
 5. Configurer GRUB
 
@@ -28,7 +27,7 @@ ls /sys/firmware/efi
 ```
 Si vous avez une erreur comme quoi ce dossier n'existe pas, c'est que vous n'êtes pas en UEFI. Si vous avez des trucs comme config_table, efivars, runtime... C'est bon!
 
-## Trouver les partitions systèmes et ESP
+## Trouver les partitions systèmes et ESP, puis les monter
 Les opérations qui vont suivre nécessitent les permissions du superutilisateur ("root"), une sorte d'équivalent encore plus puissant à l'administrateur Windows. Pour les avoir, vous pouvez écrire `sudo ` avant chacune des commandes (n'oubliez pas de mettre un espace entre sudo et la commande que vous voulez éxécuter) qui va suivre, ou alors écrire `sudo su ` pour vous identifier en tant que root (et donc éxécuter chacune des commandes en tant que root).<br/>
 Vos disques (j'entends par là tout ce qui sert à contenir des données) sont coupés en plusieurs parties, appelées partitions. Par exemple, il se peut que sur une machine Windows il y ait deux partitions: C: et D: (eh oui, les deux sont sur le même disque). Il y a plusieurs types de partitions, car il y a plusieurs façon de stocker des données sur un disque. On dit qu'une partition est formatée à un format quand cette partition utilise ce format (cette méthode de stockage) de données.<br/>
 Pour repérer les partitions, commencez par les lister, avec
@@ -170,4 +169,54 @@ Périphérique     Début       Fin  Secteurs Taille Type
 /dev/sda4    241436672 250069646   8632975   4,1G Partition d'échange Linux
 ```
 Certaines sont des systèmes de fichiers Linux, on peut supposer que notre système d'exploitation Linux a été installé sur ces partitions (vous pouvez en avoir moins, mais en général si ça contient "système de fichiers Linux", c'est que c'est le disque où vous avez installé Linux).<br/>
-Vous remarquerez que toutes les partitions commencent par `/dev/sda` (le nom de mon disque), suivi par leur numéro (1,2,3,4). En général, le système va être installé sur la première partition, `/dev/sda1` dans mon cas. 
+Vous remarquerez que toutes les partitions commencent par `/dev/sda` (le nom de mon disque), suivi par leur numéro (1,2,3,4). En général, le système va être installé sur la première partition, `/dev/sda1` dans mon cas. Mais il est bon de vérifier. Pour la suite, on va partir du principe que votre système est installé sur un système de fichiers Linux (c'est très souvent le cas).<br/>
+
+Une fois que vous avez repéré le disque où Linux est installé, essayez de monter la première partition contenant un système de fichier Linux (`/dev/sda1` pour moi):
+```bash
+mount /dev/sda1 /mnt #Remplacez /dev/sda1 par la partition qui correspond
+```
+(sur chaque ligne, ce qui est après le dièse # correspond à un commentaire)
+En fait, on dit que désormais le dossier /mnt correspond à ce que contient la partition /dev/sda1
+Dès lors, on peut lister touts les fichiers dans cette partition:
+```bash
+ls /mnt
+```
+Si vous avez des trucs comme `bin`,`boot`,`etc`... C'est que la partition que vous venez de monter est la partition système. Si ce n'est pas le cas, essayez une autre partition:
+```bash
+umount /dev/sda1 #/dev/sda1 est la partition que je viens de monter, adaptez dans votre cas
+mount /dev/sda3 /mnt # Je monte /dev/sda3, la seconde partitiona avec un  système de fichiers Linux
+ls /mnt # Je liste les fichiers dans /mnt, comme tout à l'heure
+```
+
+Répétez jusqu'à ce que vous trouviez `bin`, `boot`, `etc` et autres.<br/>
+
+Quand c'est fait, essayez de monter la partition EFI **(appelée aussi ESP)**:
+```
+/dev/sda2     83888128  84150271    262144   128M Système EFI
+```
+(elle peut aussi être en FAT32 plutôt qu'EFI. Elle se trouve sur le même disque que votre système)
+Montez-la dans /mnt/boot/efi:
+```bash
+mkdir -p /mnt/boot/efi
+mount /dev/sda2 /mnt/boot/efi # /dev/sda2 est la parition EFI
+```
+Quand c'est fait, félicitations, vous avez réussi à monter les partitions! Le plus dur est fait!
+## Réinstaller GRUB
+Toujours en tant que root, éxécutez la commande suivante:
+```bash
+grub-install --target=x86_64-efi --efi-directory=/mnt/boot/efi --removable
+```
+Aucune erreur ne doit apparaître. Sinon vous pouvez [ouvrir un problème](https://github.com/mattmatt0/mattmatt0.github.io/issues/new) (mais vérifiez que vous ayez bien suivi le guide)
+Et voilà, GRUB a été réinstallé. Mais il faut le configurer, sinon vous n'allez pas pouvoir en faire grand chose.
+## Configurer GRUB
+Toujours en tant que root, éxécutez la commande suivante:
+```bash
+grub-mkconfig -o /mnt/boot/grub/grub.cfg
+```
+Si vous avez des erreurs du style `failed to load GRUB drive for /dev/sdb1, check your device.map`, mais que /dev/sdb1 n'est pas le disque où vous venez d'installer Linux, ça n'est pas grave.
+
+Quand la commande est terminée, vous pouvez redémarrer proprement:
+```bash
+umount -R /mnt
+reboot
+```
