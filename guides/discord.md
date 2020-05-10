@@ -26,7 +26,7 @@ Vous n'utilisez pas ArchLinux?<sup>vous devriez</sup>
 Référez vous à la documentation de votre distribution. Si celle-ci est basée sur Debian (Ubuntu, Linux Mint, KDE Neon, ElementaryOS, Deepin...), vous pouvez télécharger un .deb sur [le site de Discord](https://discord.gg), et l'installer avec votre gestionnaire de paquets.
 ## Présentation de l'interface:
 Vous devriez arriver sur un écran ressemblant à celui-ci:
-![alt text](DiscordMenu.jpg)
+![alt text](resources_depannage_grub/Screenshot_20200510_135012.png)
 En rouge, ce sont les serveurs. Qu'est-ce qu'un serveur? Un serveur Discord regroupe des espaces de discussion textuels et vocaux. Ce serait un peu l'équivalent d'un groupe sur Snapchat / WhatsApp, mais en mieux car il peut être divisé pour plusieurs sujets.
 Dans cette zone, vous avez tout en haut l'accueil. D'ici, vous pourrez accéder à vos conversations privées ainsi qu'à vos amis<sup>si vous en avez</sup>.
 
